@@ -1,10 +1,18 @@
 const express = require ('express'); //import express
+var morgan = require('morgan')
+
 const app = express(); // express is now ready to be used
 
 //ejs is needed for rendering html (till now we did res.send)
 // no need to require ejs like require('express');
 
 app.set('view engine', 'ejs'); // other alternativs for ejs pugs, jade 
+
+// let the app use morgan now
+app.use(morgan('dev'));
+//now we are using morgan middleware in our app
+//this will inform us of which route user visited what was response code how much time it took. 
+// a sample output=> GET / 304 10.857 ms - - this means user visited / route with code 304 in 10.857 ms time
 
 
 //middle ware : visualize it in action

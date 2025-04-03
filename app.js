@@ -38,4 +38,16 @@ app.get('/', (req,res) => {
     res.render('index');
 })
 
+//adding middleware only for a specific route
+
+
+app.get('/customMiddleware', (req,res,next)=> {
+    const a = 25;
+    const b = 32;
+    console.log(a+b);
+    next() ; //this triggers it to go to the next part of this snippet, which is res.render()
+}, (req,res) => {
+    res.send('you have crossed middleware execution, this middleware logic is exclusive only for this route');
+})
+
 app.listen(3000); // not mandatory to do this while using Express

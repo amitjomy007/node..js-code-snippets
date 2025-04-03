@@ -1,23 +1,9 @@
-const http = require('http');
+const express = require ('express'); //import express
 
+const app = express(); // express is now ready to be used
 
-//creates a server, callback whenever there is a request and executes res
-const server = http.createServer((req,res) => { 
-    
+app.get('/', (req,res) => {
+    res.send("Haha you are in '/' route");
+})
 
-    console.log(req.url); // example : localhost:3000/about this line of code will print /about
-    //so how to route?
-
-    if(req.url=="/about"){
-        res.end("You are in the about page");
-    }
-    else {
-        res.end("Error 404 not found");
-    }
-    
-});
-//whenever user visits website Hello world will appear 
-
-
-//create the server at port 3000
-server.listen(3000);
+app.listen(3000); // not mandatory to do this while using Express
